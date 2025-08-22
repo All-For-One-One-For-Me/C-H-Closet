@@ -1,4 +1,6 @@
-/* Color Scheme */
+/* ================================
+   Root Color Scheme
+================================ */
 :root {
   --pink: #FF4F87;
   --pink-deep: #A00054;
@@ -7,126 +9,109 @@
   --bg: #FFF5F8;
   --ink: #1A1A1A;
   --white: #fff;
-  --shadow: 0 4px 16px rgba(0,0,0,0.07);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
 }
 
-/* General Styles */
+/* ================================
+   Global Styles
+================================ */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--bg);
   color: var(--ink);
+  line-height: 1.6;
 }
 
-/* Header Styles */
-nav {
-    background-color: var(--pink);
-    padding: 50px 0;
-    text-align: center;
-    text-decoration: none;
-}
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-}
-nav ul li {
-    margin: 0 15px;
-    text-decoration: none;
-}
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s, border-bottom 0.3s;
-}
-nav ul li a:hover {
-  color: var(--pink-deep);
-  border-bottom: 2px solid var(--pink-deep);
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Modern Navbar Styles */
+/* ================================
+   Navbar
+================================ */
 .navbar {
   background: var(--pink);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 100;
 }
+
 .nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0.7rem 1.5rem;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .nav-logo {
   font-size: 1.7rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   transition: color 0.2s;
 }
 .nav-logo:hover,
 .nav-logo:focus {
   color: var(--accent-cool);
 }
+
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
   margin: 0;
   padding: 0;
-  align-items: center;
 }
-.nav-links li a {
-  color: #fff;
-  text-decoration: none;
+
+.nav-links a {
+  color: var(--white);
   font-weight: 500;
-  transition: color 0.2s, background 0.2s;
+  text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  font-size: 1rem;
-  display: block;
+  transition: background 0.2s, color 0.2s;
 }
-.nav-links li a:hover,
-.nav-links li a:focus {
-  background: #fff;
+.nav-links a:hover,
+.nav-links a:focus {
+  background: var(--white);
   color: var(--pink);
 }
+
 .menu-icon {
   display: none;
   font-size: 2rem;
   cursor: pointer;
-  user-select: none;
-  color: #fff;
-  margin-left: 1rem;
+  color: var(--white);
 }
 .menu-toggle {
   display: none;
 }
 
 /* Responsive Navbar */
-@media (max-width: 900px) {
-  .nav-container {
-    padding: 0.5rem 0.7rem;
-  }
-}
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem 1rem;
   }
+
+  .menu-icon {
+    display: block;
+    margin-left: auto;
+  }
+
   .nav-links {
     flex-direction: column;
     width: 100%;
@@ -136,70 +121,69 @@ nav ul li a:hover {
     border-radius: 0 0 10px 10px;
     box-shadow: var(--shadow);
   }
+
   .nav-links li {
     width: 100%;
   }
-  .nav-links li a {
+
+  .nav-links a {
     width: 100%;
     padding: 1rem;
-    font-size: 1.1rem;
     border-radius: 0;
+    font-size: 1.1rem;
   }
-  .menu-icon {
-    display: block;
-    margin-left: auto;
-  }
+
   .menu-toggle:checked + .menu-icon + .nav-links {
     display: flex;
   }
 }
 
-/* Main Content Styles */
-h2 {
-    text-align: center;
-    color: var(--ink);
-}
-.p {
-    text-align: center;
-}
-h4 {
-    text-align: center;
-    color: var(--ink);
-    margin: 20px 0;
+/* ================================
+   Sections
+================================ */
+.section {
+  padding: 3rem 1rem;
 }
 
-/* Section Styles */
-.section {
-  background: var(--bg);
-  padding: 3rem 0 2rem 0;
-  margin: 0;
+h1, h2, h3, h4 {
+  text-align: center;
+  margin: 0 0 1rem;
+  color: var(--ink);
 }
+
+p {
+  margin: 0 0 1rem;
+}
+
 .welcome-content {
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  padding: 2rem 1rem;
 }
-.brand-accent {
-  color: var(--pink);
-  font-weight: bold;
-}
-.welcome-content h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+.welcome-content h1 {
+  font-size: 2.5rem;
 }
 .welcome-content p {
   font-size: 1.15rem;
   margin-bottom: 2rem;
 }
+
+.brand-accent {
+  color: var(--pink);
+  font-weight: bold;
+}
+
 .welcome-actions {
   display: flex;
-  gap: 1rem;
   justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
 }
-.btn-primary,
-.btn-secondary {
+
+/* ================================
+   Buttons
+================================ */
+.btn {
   display: inline-block;
   padding: 0.7rem 1.5rem;
   border-radius: 25px;
@@ -208,31 +192,34 @@ h4 {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
+
 .btn-primary {
   background: var(--pink);
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(255,79,135,0.08);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(255, 79, 135, 0.08);
 }
-.btn-primary:hover,
-.add-to-cart.btn-primary:hover {
+.btn-primary:hover {
   background: var(--pink-deep);
-  color: #fff;
+  transform: translateY(-2px);
 }
+
 .btn-secondary {
   background: var(--accent-cool);
-  color: #fff;
+  color: var(--white);
 }
 .btn-secondary:hover {
   background: var(--pink);
-  color: #fff;
 }
 
-/* Product Section Styles */
+/* ================================
+   Product Cards
+================================ */
 .featured-products {
   padding-top: 0;
 }
+
 .product-list {
   display: flex;
   justify-content: center;
@@ -240,61 +227,64 @@ h4 {
   flex-wrap: wrap;
   margin-top: 2rem;
 }
+
 .product-card {
-  background-color: #fff;
+  background: var(--white);
   border: 1px solid var(--pink-warm);
   border-radius: 14px;
-  padding: 1.5rem 1.2rem;
+  padding: 1.5rem;
   text-align: center;
   box-shadow: var(--shadow);
-  transition: transform 0.3s, box-shadow 0.3s;
   max-width: 260px;
-  width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .product-card:hover {
   transform: translateY(-7px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(255,79,135,0.13);
+  box-shadow: 0 8px 24px rgba(255, 79, 135, 0.15);
 }
+
 .product-card img {
-  max-width: 100%;
   height: 220px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
+
 .product-card h4 {
   font-size: 1.15rem;
-  margin: 0.7rem 0 0.5rem 0;
-  color: var(--ink);
+  margin: 0.7rem 0 0.5rem;
 }
+
 .product-card .price {
   font-size: 1.1rem;
   color: var(--pink-deep);
   font-weight: bold;
   margin-bottom: 1rem;
 }
-.product-card .add-to-cart {
-  margin-bottom: 0.7rem;
+
+.product-card .btn {
   width: 100%;
+  margin-bottom: 0.7rem;
 }
+
 .product-card .link {
-  display: inline-block;
-  margin-top: 0.5rem;
   color: var(--accent-cool);
   font-weight: 500;
   text-decoration: underline;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
 }
 .product-card .link:hover {
   color: var(--pink);
 }
 
-/* Footer Styles */
+/* ================================
+   Footer
+================================ */
 footer {
   background: var(--pink);
-  color: #fff;
+  color: var(--white);
   text-align: center;
-  padding: 1.2rem 0 0.7rem 0;
+  padding: 1.2rem 0;
   margin-top: 2rem;
 }
 .footer-content {
@@ -303,16 +293,5 @@ footer {
   font-size: 1rem;
 }
 .footer-content .brand-accent {
-  color: #fff;
-  font-weight: bold;
-}
-
-/* Utility */
-.link {
-  color: var(--accent-cool);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.link:hover {
-  color: var(--pink);
+  color: var(--white);
 }
