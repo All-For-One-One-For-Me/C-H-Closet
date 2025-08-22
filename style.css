@@ -1,0 +1,182 @@
+/* color scheme */
+:root {
+  --pink: #FF4F87;
+  --pink-deep: #A00054;
+  --pink-warm: #FFC2D1;
+  --accent-cool: #00B7C2;
+  --bg: #FFF5F8;
+  --ink: #1A1A1A;
+}
+.btn-primary {
+  background: var(--pink);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #FF7AAE;
+}
+.link {
+  color: var(--accent-cool);
+}
+.card {
+  background: #ffffff;
+  border: 1px solid var(--pink-warm);
+}
+.section {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+}
+
+/* Header Styles */
+nav {
+    background-color: var(--pink);
+    padding: 50px 0;
+    text-align: center;
+    text-decoration: none;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+nav ul li {
+    margin: 0 15px;
+    text-decoration: none;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+nav ul li a:hover {
+  color: var(--pink-deep);
+  border-bottom: 2px solid var(--pink-deep);
+}
+
+/* Main Content Styles */
+h2 {
+    text-align: center;
+    color: var(--ink);
+}
+.p {
+    text-align: center;
+}
+h4 {
+    text-align: center;
+    color: var(--ink);
+    margin: 20px 0;
+}
+
+/* Form Styles */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Form Elements */
+label {
+    display: block;
+    margin-bottom: 10px 0 5px;
+    color: var(--ink);
+    font-weight: bold;
+}
+/* Input and Textarea Styles */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+input:focus, textarea:focus {
+    border-color: var(--accent-cool);
+    outline: none;
+}
+input[type="submit"] {
+    background-color: var(--accent-cool);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+input[type="submit"]:hover {
+    background-color: var(--pink);
+}
+
+/* Product Section Styles */
+.product {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: center;
+}
+.product-card {
+    background-color: #fff;
+    border: 1px solid var(--pink-warm);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+.product-card img {
+    max-width: 100%;
+    height: 300px;
+    border-radius: 8px;
+}
+.product-card h4 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: var(--ink);
+}
+.product-card p {
+    font-size: 16px;
+    color: var(--pink-deep);
+    font-weight: bold;
+}
+.product-card button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: var(--accent-cool);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+.product-card button:hover {
+    background-color: var(--pink);
+}
+
+/* Link Styles */
+.link {
+    text-decoration: none;
+}
+:hover .link {
+    text-decoration: none;
+}

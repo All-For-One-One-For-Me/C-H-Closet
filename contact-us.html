@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contact-U</title>
+  </head>
+
+  <header>
+    <h1>My online Shop</h1>
+    <nav>
+            <ul>
+        <li><a class="link" href="index.html">Home</a></li>
+        <li><a class="link" href="gallery.html">Gallery</a></li>
+        <li><a class="link" href="clothes.html">Clothes</a></li>
+        <li><a class="link" href="about-us.html">About Us</a></li>
+         <li><a class="link"href="contact-us.html">Contact Us</a></li>
+      </ul>
+  </header>
+
+
+<main>
+    <h2>Contact Us</h2>
+    <p class="p">If you have any questions or need assistance, please reach out to us using the form below.</p>
+    
+    <form action="#" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number.">
+      
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p class="p">Alternatively, you can contact us via email at <a class="link" href="mailto:">chigoemeagha@gmail.com</a></p>
+<footer>
+  <hr>
+    <p>&copy; 2025 My Online Shop. All rights reserved.</p>
+        </footer>
+
+</html>
