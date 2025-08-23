@@ -1,39 +1,46 @@
-/* ================================
+/* ================================ 
    Root Color Scheme
 ================================ */
 :root {
-  --pink: #FF4F87;
-  --pink-deep: #A00054;
-  --pink-warm: #FFC2D1;
-  --accent-cool: #00B7C2;
-  --bg: #FFF5F8;
-  --ink: #1A1A1A;
-  --white: #fff;
-  --shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  --pink: #ff4f87;
+  --pink-deep: #a00054;
+  --pink-warm: #ffc2d1;
+  --accent-cool: #00b7c2;
+  --bg: #fff5f8;
+  --ink: #1a1a1a;
+  --white: #ffffff;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.12);
+
   --radius: 12px;
-  --transition: 0.3s ease;
+  --transition: 0.3s ease-in-out;
 }
 
 /* ================================
    Global Styles
 ================================ */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: var(--transition);
+  transition: color var(--transition);
 }
 
 a:hover {
@@ -49,11 +56,12 @@ img {
 h1, h2, h3, h4 {
   text-align: center;
   margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 .section {
   padding: 4rem 1.5rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -70,7 +78,7 @@ h1, h2, h3, h4 {
 }
 
 .nav-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
   display: flex;
@@ -80,14 +88,16 @@ h1, h2, h3, h4 {
 
 .nav-logo {
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   color: var(--white);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .nav-links .link {
@@ -95,6 +105,7 @@ h1, h2, h3, h4 {
   font-weight: 500;
   padding: 0.4rem 0.8rem;
   border-radius: var(--radius);
+  transition: background var(--transition);
 }
 
 .nav-links .link:hover,
@@ -107,12 +118,17 @@ h1, h2, h3, h4 {
 ================================ */
 .btn {
   display: inline-block;
-  padding: 0.7rem 1.2rem;
+  padding: 0.75rem 1.25rem;
   border-radius: var(--radius);
   border: none;
   cursor: pointer;
   font-weight: 600;
-  transition: var(--transition);
+  font-size: 1rem;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary {
@@ -130,7 +146,7 @@ h1, h2, h3, h4 {
 }
 
 .btn-secondary:hover {
-  opacity: 0.9;
+  background: #0096a1; /* slightly darker on hover */
 }
 
 /* ================================
@@ -149,6 +165,7 @@ h1, h2, h3, h4 {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* ================================
@@ -157,8 +174,7 @@ h1, h2, h3, h4 {
 .product-list,
 .gallery-grid {
   display: grid;
-  text-align: center;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -166,21 +182,22 @@ h1, h2, h3, h4 {
 .product-card {
   background: var(--white);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-sm);
   padding: 1.5rem;
   text-align: center;
-  transition: var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
 }
 
 .price {
   font-weight: bold;
   color: var(--pink);
   margin: 1rem 0;
+  font-size: 1.2rem;
 }
 
 /* ================================
@@ -188,12 +205,13 @@ h1, h2, h3, h4 {
 ================================ */
 .gallery-item img {
   border-radius: var(--radius);
-  transition: var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition);
   cursor: pointer;
 }
 
 .gallery-item img:hover {
   transform: scale(1.05);
+  box-shadow: var(--shadow);
 }
 
 /* ================================
@@ -214,15 +232,17 @@ form {
 form input,
 form textarea {
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.85rem 1rem;
   border-radius: var(--radius);
   border: 1px solid #ddd;
   font-size: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 form input:focus,
 form textarea:focus {
   border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(255, 79, 135, 0.25);
   outline: none;
 }
 
@@ -236,4 +256,6 @@ footer {
   text-align: center;
   padding: 1.5rem;
   margin-top: 3rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
 }
