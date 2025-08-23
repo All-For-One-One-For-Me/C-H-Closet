@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C-H Closet | Gallery</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Header / Navbar -->
-  <header class="site-header">
+  <header>
     <nav class="navbar">
       <div class="nav-container">
         <a href="index.html" class="nav-logo" aria-label="C-H Closet Home">C-H Closet</a>
 
-        <!-- Mobile Menu Toggle -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-        <label for="menu-toggle" class="menu-icon" aria-label="Toggle navigation">☰</label>
+        <!-- Mobile Menu -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon" aria-label="Toggle navigation">&#9776;</label>
 
-        <!-- Navigation Links -->
+        <!-- Nav Links -->
         <ul class="nav-links">
           <li><a href="index.html" class="link">Home</a></li>
           <li><a href="gallery.html" class="link active">Gallery</a></li>
@@ -29,59 +29,101 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main -->
   <main>
-    <section class="section">
-      <h2>Our Gallery</h2>
-      <p style="text-align:center; max-width:700px; margin:0 auto;">
-        Browse through our curated collection of fashion pieces and unique styles.  
-        Each piece is handpicked to inspire your next look.
+    <section class="section gallery-intro">
+      <h1>Our Gallery</h1>
+      <p>
+        Step into the world of <span class="brand-accent">C-H Closet</span>.  
+        Explore our curated collection of bold pieces, timeless fits, and modern streetwear — styled to inspire your next look.
       </p>
-
-      <!-- Gallery Grid -->
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="images/Photo_1.jpg" alt="Gallery item 1">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_2.jpg" alt="Gallery item 2">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_3.jpg" alt="Gallery item 3">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_4.jpg" alt="Gallery item 4">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_5.jpg" alt="Gallery item 5">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_6.jpg" alt="Gallery item 6">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_7.jpg" alt="Gallery item 7">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_8.jpg" alt="Gallery item 8">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_9.jpg" alt="Gallery item 9">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_10.jpg" alt="Gallery item 10">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_11.jpg" alt="Gallery item 11">
-        </div>
-        <div class="gallery-item">
-          <img src="images/Photo_12.jpg" alt="Gallery item 12"> 
-        </div>
-      </div>  
     </section>
-  </main> 
+
+    <!-- Gallery -->
+    <section class="section">
+      <div class="gallery-grid">
+        <!-- Gallery Item -->
+        <div class="gallery-item">
+          <img src="images/Photo_1.jpg" alt="Summer collection look 1" />
+          <div class="overlay">
+            <p>Summer Glow</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_2.jpg" alt="Streetwear look 2" />
+          <div class="overlay">
+            <p>Street Luxe</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_3.jpg" alt="Runway-inspired design" />
+          <div class="overlay">
+            <p>Runway Ready</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_4.jpg" alt="Minimalist fashion piece" />
+          <div class="overlay">
+            <p>Minimal Mood</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_5.jpg" alt="Vintage-inspired outfit" />
+          <div class="overlay">
+            <p>Vintage Chic</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_6.jpg" alt="Modern street look" />
+          <div class="overlay">
+            <p>Urban Edge</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_7.jpg" alt="Classic bold look" />
+          <div class="overlay">
+            <p>Bold Classics</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_8.jpg" alt="Luxury fashion look" />
+          <div class="overlay">
+            <p>Luxury Lines</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_9.jpg" alt="Casual streetwear outfit" />
+          <div class="overlay">
+            <p>Everyday Flex</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_10.jpg" alt="Evening wear" />
+          <div class="overlay">
+            <p>Night Glow</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_11.jpg" alt="Contemporary fashion" />
+          <div class="overlay">
+            <p>Contemporary Cool</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/Photo_12.jpg" alt="Bold designer fit" />
+          <div class="overlay">
+            <p>Designer Bold</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
   <footer>
-    <hr>
-    <p>&copy; 2025 My Online Shop. All rights reserved.</p>
+    <div class="footer-content">
+      <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 </html>

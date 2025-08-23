@@ -1,60 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C-H Closet | Home</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>C-H Closet | Contact</title>
 </head>
 <body>
   <!-- Header / Navbar -->
-  <header class="site-header">
+  <header>
     <nav class="navbar">
       <div class="nav-container">
-        <a href="index.html" class="nav-logo" aria-label="C-H Closet Home">C-H Closet</a>
-
-        <!-- Mobile Menu Toggle -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-        <label for="menu-toggle" class="menu-icon" aria-label="Toggle navigation">
-          ☰
-        </label>
-
-        <!-- Navigation Links -->
+        <a href="index.html" class="nav-logo">C-H Closet</a>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon" aria-label="Open navigation">&#9776;</label>
         <ul class="nav-links">
-          <li><a href="index.html" class="link">Home</a></li>
-          <li><a href="gallery.html" class="link">Gallery</a></li>
-          <li><a href="clothes.html" class="link">Clothes</a></li>
-          <li><a href="about-us.html" class="link">About Us</a></li>
-          <li><a href="contact-us.html" class="link">Contact Us</a></li>
+          <li><a class="link" href="index.html">Home</a></li>
+          <li><a class="link" href="gallery.html">Gallery</a></li>
+          <li><a class="link" href="clothes.html">Clothes</a></li>
+          <li><a class="link" href="about-us.html">About Us</a></li>
+          <li><a class="link active" href="contact-us.html">Contact Us</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
-<main>
-    <h2>Contact Us</h2>
-    <p class="p">If you have any questions or need assistance, please reach out to us using the form below.</p>
-    
-    <form action="#" method="post">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+  <!-- Main -->
+  <main>
+    <section class="section contact-hero">
+      <h1>Contact Us</h1>
+      <p>
+        Got questions? Want to collab? Need help with an order?  
+        Drop us a message — we’d love to hear from you!
+      </p>
+    </section>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
+    <section class="section contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-card">
+        <form action="#" method="post" class="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
 
-      <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number.">
-      
-      <button type="submit">Send Message</button>
-    </form>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
 
-    <p class="p">Alternatively, you can contact us via email at <a class="link" href="mailto:">chigoemeagha@gmail.com</a></p>
-<footer>
-  <hr>
-    <p>&copy; 2025 My Online Shop. All rights reserved.</p>
-        </footer>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              placeholder="123-456-7890" 
+              pattern="[0-9]{10}" 
+              title="Please enter a valid 10-digit phone number."
+              required 
+            />
+          </div>
 
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Other Ways to Reach Us</h3>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:chigoemeagha@gmail.com">chigoemeagha@gmail.com</a></li>
+          <li><strong>Phone:</strong> +1 (123) 456-7890</li>
+          <li><strong>Location:</strong> Accra, Ghana</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
 </html>

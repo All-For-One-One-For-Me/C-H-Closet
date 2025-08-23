@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
   <title>C-H Closet | Home</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Header / Navbar -->
-  <header class="site-header">
+  <header>
     <nav class="navbar">
       <div class="nav-container">
-        <a href="index.html" class="nav-logo" aria-label="C-H Closet Home">C-H Closet</a>
-
-        <!-- Mobile Menu Toggle -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-        <label for="menu-toggle" class="menu-icon" aria-label="Toggle navigation">
-          ☰
-        </label>
-
-        <!-- Navigation Links -->
+        <a href="index.html" class="nav-logo">C-H Closet</a>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon" aria-label="Open navigation">&#9776;</label>
         <ul class="nav-links">
-          <li><a href="index.html" class="link">Home</a></li>
-          <li><a href="gallery.html" class="link">Gallery</a></li>
-          <li><a href="clothes.html" class="link">Clothes</a></li>
-          <li><a href="about-us.html" class="link">About Us</a></li>
-          <li><a href="contact-us.html" class="link">Contact Us</a></li>
+          <li><a class="link active" href="index.html">Home</a></li>
+          <li><a class="link" href="gallery.html">Gallery</a></li>
+          <li><a class="link" href="clothes.html">Clothes</a></li>
+          <li><a class="link" href="about-us.html">About Us</a></li>
+          <li><a class="link" href="contact-us.html">Contact Us</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
-  <!-- Main Content -->
+  <!-- Hero / Welcome -->
   <main>
-    <!-- Welcome Section -->
     <section class="welcome section">
       <div class="welcome-content">
         <h1>Welcome to <span class="brand-accent">C-H Closet</span></h1>
-        <p>Discover unique styles and the latest trends in fashion. Shop our curated collections and enjoy a seamless online experience!</p>
+        <p>
+          Your one-stop destination for bold fits, unique styles, and the latest fashion drops.
+          Browse our collections and upgrade your wardrobe with confidence.
+        </p>
         <div class="welcome-actions">
           <a href="gallery.html" class="btn btn-primary">View Gallery</a>
           <a href="clothes.html" class="btn btn-secondary">Shop Clothes</a>
@@ -47,25 +43,36 @@
 
     <!-- Featured Products -->
     <section class="featured-products section">
-      <h2>Featured Product</h2>
+      <h2>Featured Products</h2>
       <div class="product-list">
         <article class="product-card">
-          <figure>
-            <img src="images/Angelina.jpg" alt="Our famous fashion design named Angelina" width="200" height="auto">
-            <figcaption>One of our Famous Designs</figcaption>
-          </figure>
+          <img src="images/Angelina.jpg" alt="Our premium fashion design" />
+          <h3>Signature Angelina Dress</h3>
           <p class="price">$9,999.99</p>
-          <button type="button" class="btn btn-primary">Add to Cart</button>
-          <a href="clothes.html" class="link">View More</a>
+          <div class="card-actions">
+            <button type="button" class="btn btn-primary add-to-cart">Add to Cart</button>
+            <a class="btn btn-secondary" href="clothes.html">View More</a>
+          </div>
+        </article>
+
+        <!-- Duplicate cards for showcase -->
+        <article class="product-card">
+          <img src="images/sample2.jpg" alt="Trendy streetwear jacket" />
+          <h3>Streetwear Luxe Jacket</h3>
+          <p class="price">$249.99</p>
+          <div class="card-actions">
+            <button type="button" class="btn btn-primary add-to-cart">Add to Cart</button>
+            <a class="btn btn-secondary" href="clothes.html">View More</a>
+          </div>
         </article>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer">
+  <footer>
     <div class="footer-content">
-      <p>&copy; <time datetime="2025">2025</time> <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
+      <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
     </div>
   </footer>
 </body>
