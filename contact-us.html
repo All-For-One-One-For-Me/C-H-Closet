@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Get in touch with C-H Closet for collaborations, questions, or support. We'd love to hear from you." />
   <link rel="stylesheet" href="style.css" />
   <title>C-H Closet | Contact</title>
+  
 </head>
 <body>
   <!-- Header / Navbar -->
   <header>
     <nav class="navbar">
       <div class="nav-container">
-        <a href="index.html" class="nav-logo">C-H Closet</a>
+        <a href="index.html" class="nav-logo" aria-label="C-H Closet Home">C-H Closet</a>
         <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden />
-        <label for="menu-toggle" class="menu-icon" aria-label="Open navigation">&#9776;</label>
+        <label for="menu-toggle" class="menu-icon" aria-label="Toggle navigation">&#9776;</label>
         <ul class="nav-links">
           <li><a class="link" href="index.html">Home</a></li>
           <li><a class="link" href="gallery.html">Gallery</a></li>
           <li><a class="link" href="clothes.html">Clothes</a></li>
           <li><a class="link" href="about-us.html">About Us</a></li>
-          <li><a class="link active" href="contact-us.html">Contact Us</a></li>
+          <li><a class="link active" href="contact-us.html" aria-current="page">Contact Us</a></li>
         </ul>
       </div>
     </nav>
@@ -40,12 +42,12 @@
       <div class="contact-card">
         <form action="#" method="post" class="contact-form">
           <div class="form-group">
-            <label for="name">Full Name</label>
+            <label for="name">Full Name <span aria-hidden="true">*</span></label>
             <input type="text" id="name" name="name" placeholder="Your name" required />
           </div>
 
           <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
             <input type="email" id="email" name="email" placeholder="your@email.com" required />
           </div>
 
@@ -55,15 +57,14 @@
               type="tel" 
               id="phone" 
               name="phone" 
-              placeholder="123-456-7890" 
+              placeholder="1234567890"
               pattern="[0-9]{10}" 
-              title="Please enter a valid 10-digit phone number."
-              required 
+              title="Enter a 10-digit phone number (digits only)." 
             />
           </div>
 
           <div class="form-group">
-            <label for="message">Your Message</label>
+            <label for="message">Your Message <span aria-hidden="true">*</span></label>
             <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
           </div>
 
@@ -76,7 +77,7 @@
         <h3>Other Ways to Reach Us</h3>
         <ul>
           <li><strong>Email:</strong> <a href="mailto:chigoemeagha@gmail.com">chigoemeagha@gmail.com</a></li>
-          <li><strong>Phone:</strong> +1 (123) 456-7890</li>
+          <li><strong>Phone:</strong> +233 55 123 4567</li>
           <li><strong>Location:</strong> Accra, Ghana</li>
         </ul>
       </div>
@@ -84,9 +85,9 @@
   </main>
 
   <!-- Footer -->
-  <footer>
+  <footer class="site-footer">
     <div class="footer-content">
-      <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
+      <p>&copy; <time datetime="2025">2025</time> <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
     </div>
   </footer>
 </body>
