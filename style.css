@@ -157,6 +157,7 @@ h1, h2, h3, h4 {
 .product-list,
 .gallery-grid {
   display: grid;
+  text-align: center;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
