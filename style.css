@@ -190,6 +190,9 @@ h1, h2, h3, h4 {
   padding: 1.5rem;
   text-align: center;
   transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Add this line to center content horizontally */
 }
 .product-card:hover {
   transform: translateY(-6px);
@@ -198,6 +201,9 @@ h1, h2, h3, h4 {
 .product-card img {
   border-radius: 8px;
   margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .product-card h3 {
   font-size: 1.1rem;
