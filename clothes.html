@@ -82,7 +82,7 @@
       border-radius: var(--radius);
       border: 1px solid #ccc;
       font-size: 1rem;
-      min-width: 180px;
+      min-width: 160px;
       outline: none;
       transition: border var(--transition), box-shadow var(--transition);
     }
@@ -99,7 +99,7 @@
       font-size: 0.9rem;
     }
     .price-range input {
-      width: 120px;
+      width: 110px;
     }
 
     /* Product grid */
@@ -182,6 +182,13 @@
         <option value="women">Women</option>
         <option value="kids">Kids</option>
       </select>
+      <select id="filterSize">
+        <option value="all">All Sizes</option>
+        <option value="s">Small (S)</option>
+        <option value="m">Medium (M)</option>
+        <option value="l">Large (L)</option>
+        <option value="xl">Extra Large (XL)</option>
+      </select>
       <select id="sortPrice">
         <option value="default">Sort by Price</option>
         <option value="low-high">Low → High</option>
@@ -199,21 +206,21 @@
   <!-- Products -->
   <main>
     <section class="product-grid" id="productGrid">
-      <div class="product-card" data-category="men" data-price="49.99">
+      <div class="product-card" data-category="men" data-price="49.99" data-size="m">
         <img src="images/Angelina.jpg" alt="Product 1">
-        <h3>Men’s Shirt</h3>
+        <h3>Men’s Shirt (M)</h3>
         <p class="price">$49.99</p>
         <button class="btn-primary">Add to Cart</button>
       </div>
-      <div class="product-card" data-category="women" data-price="79.99">
+      <div class="product-card" data-category="women" data-price="79.99" data-size="l">
         <img src="images/My first cretion.jpg" alt="Product 2">
-        <h3>Women’s Dress</h3>
+        <h3>Women’s Dress (L)</h3>
         <p class="price">$79.99</p>
         <button class="btn-primary">Add to Cart</button>
       </div>
-      <div class="product-card" data-category="kids" data-price="39.99">
+      <div class="product-card" data-category="kids" data-price="39.99" data-size="s">
         <img src="images/My second creation.jpg" alt="Product 3">
-        <h3>Kids’ Outfit</h3>
+        <h3>Kids’ Outfit (S)</h3>
         <p class="price">$39.99</p>
         <button class="btn-primary">Add to Cart</button>
       </div>
@@ -229,6 +236,7 @@
   <script>
     const searchBar = document.getElementById("searchBar");
     const filterCategory = document.getElementById("filterCategory");
+    const filterSize = document.getElementById("filterSize");
     const sortPrice = document.getElementById("sortPrice");
     const minPrice = document.getElementById("minPrice");
     const maxPrice = document.getElementById("maxPrice");
@@ -238,19 +246,22 @@
     function filterProducts() {
       const searchText = searchBar.value.toLowerCase();
       const category = filterCategory.value;
+      const size = filterSize.value;
       const min = parseFloat(minPrice.value) || 0;
       const max = parseFloat(maxPrice.value) || Infinity;
 
       products.forEach(product => {
         const name = product.querySelector("h3").textContent.toLowerCase();
         const productCategory = product.dataset.category;
+        const productSize = product.dataset.size;
         const price = parseFloat(product.dataset.price);
 
         const matchesSearch = name.includes(searchText);
         const matchesCategory = category === "all" || productCategory === category;
+        const matchesSize = size === "all" || productSize === size;
         const matchesPrice = price >= min && price <= max;
 
-        product.style.display = (matchesSearch && matchesCategory && matchesPrice) ? "block" : "none";
+        product.style.display = (matchesSearch && matchesCategory && matchesSize && matchesPrice) ? "block" : "none";
       });
     }
 
@@ -269,6 +280,7 @@
 
     searchBar.addEventListener("input", filterProducts);
     filterCategory.addEventListener("change", filterProducts);
+    filterSize.addEventListener("change", filterProducts);
     minPrice.addEventListener("input", filterProducts);
     maxPrice.addEventListener("input", filterProducts);
     sortPrice.addEventListener("change", sortProducts);
