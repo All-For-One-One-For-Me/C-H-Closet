@@ -9,7 +9,6 @@
       --pink: #ff4f87;
       --pink-deep: #a00054;
       --pink-warm: #ffe6ee;
-      --accent-cool: #00b7c2;
       --bg: #fff5f8;
       --ink: #1a1a1a;
       --white: #ffffff;
@@ -20,7 +19,6 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: "Poppins", sans-serif;
       background: var(--bg);
@@ -28,16 +26,12 @@
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color var(--transition);
-    }
+    a { text-decoration: none; color: inherit; transition: color var(--transition); }
     a:hover { color: var(--pink-deep); }
 
     img { max-width: 100%; border-radius: var(--radius); display: block; }
 
-    h1, h2, h3, h4 { text-align: center; margin-bottom: 1rem; line-height: 1.3; }
+    h1 { text-align: center; margin-bottom: 1rem; line-height: 1.3; }
 
     /* Navbar */
     .navbar {
@@ -56,83 +50,7 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 1px;
-    }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .nav-links .link {
-      color: var(--white);
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius);
-      transition: background var(--transition);
-      position: relative;
-    }
-    .nav-links .link:hover,
-    .nav-links .active {
-      background: rgba(255,255,255,0.15);
-    }
-
-    /* Dropdown */
-    .dropdown, .sub-dropdown { position: relative; }
-    .dropdown-menu, .sub-dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--white);
-      min-width: 220px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: opacity var(--transition), transform var(--transition);
-    }
-    .dropdown-menu a, .sub-dropdown-menu a {
-      color: var(--ink);
-      padding: 0.8rem 1rem;
-      border-radius: var(--radius);
-      display: block;
-      transition: background var(--transition), padding-left var(--transition);
-    }
-    .dropdown-menu a:hover, .sub-dropdown-menu a:hover {
-      background: var(--pink-warm);
-      padding-left: 1.5rem;
-    }
-    .dropdown:hover > .dropdown-menu,
-    .sub-dropdown:hover > .sub-dropdown-menu {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-    .sub-dropdown-menu { top: 0; left: 100%; }
-
-    /* Mobile nav */
-    .menu-icon { display: none; font-size: 2rem; cursor: pointer; color: #fff; }
-    .menu-toggle { display: none; }
-    @media (max-width: 768px) {
-      .nav-container { flex-direction: column; align-items: flex-start; }
-      .nav-links { flex-direction: column; width: 100%; gap: 0.5rem; margin-top: 1rem; display: none; }
-      .menu-icon { display: block; margin-left: auto; }
-      .menu-toggle:checked + .menu-icon + .nav-links { display: flex; }
-      .dropdown-menu, .sub-dropdown-menu {
-        position: static;
-        box-shadow: none;
-        background: var(--pink-warm);
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-      }
-    }
+    .nav-logo { font-size: 1.8rem; font-weight: 700; color: var(--white); }
 
     /* Hero */
     .hero {
@@ -149,8 +67,6 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .hero h1 { font-size: 2.2rem; }
-    .hero p { font-size: 1.1rem; color: #444; }
 
     /* Filters */
     .filters {
@@ -166,7 +82,7 @@
       border-radius: var(--radius);
       border: 1px solid #ccc;
       font-size: 1rem;
-      min-width: 200px;
+      min-width: 180px;
       outline: none;
       transition: border var(--transition), box-shadow var(--transition);
     }
@@ -174,6 +90,16 @@
     .filters select:focus {
       border: 1px solid var(--pink);
       box-shadow: 0 0 8px rgba(255,79,135,0.3);
+    }
+
+    .price-range {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .price-range input {
+      width: 120px;
     }
 
     /* Product grid */
@@ -233,43 +159,11 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Navbar -->
   <header class="site-header">
     <nav class="navbar">
       <div class="nav-container">
         <a href="index.html" class="nav-logo">C-H Closet</a>
-
-        <!-- Mobile -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-
-        <!-- Links -->
-        <ul class="nav-links">
-          <li><a href="index.html" class="link">Home</a></li>
-          <li><a href="gallery.html" class="link">Gallery</a></li>
-
-          <!-- Clothes dropdown -->
-          <li class="dropdown">
-            <a href="clothes.html" class="link active">Clothes ▾</a>
-            <div class="dropdown-menu">
-              <div class="sub-dropdown">
-                <a href="#">Men ▸</a>
-                <div class="sub-dropdown-menu">
-                  <a href="#">Shirts</a><a href="#">Jeans</a><a href="#">Tops</a>
-                </div>
-              </div>
-              <div class="sub-dropdown">
-                <a href="#">Women ▸</a>
-                <div class="sub-dropdown-menu">
-                  <a href="#">Dresses</a><a href="#">Shoes</a><a href="#">Tops</a>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li><a href="about-us.html" class="link">About Us</a></li>
-          <li><a href="contact-us.html" class="link">Contact Us</a></li>
-        </ul>
       </div>
     </nav>
   </header>
@@ -279,7 +173,7 @@
     <h1>Shop Our Collection</h1>
     <p>Exclusive pieces, handcrafted with style. Add your favorites to the cart today.</p>
 
-    <!-- Search + Filters -->
+    <!-- Search + Filters + Sort -->
     <div class="filters">
       <input type="text" id="searchBar" placeholder="Search products...">
       <select id="filterCategory">
@@ -288,25 +182,36 @@
         <option value="women">Women</option>
         <option value="kids">Kids</option>
       </select>
+      <select id="sortPrice">
+        <option value="default">Sort by Price</option>
+        <option value="low-high">Low → High</option>
+        <option value="high-low">High → Low</option>
+      </select>
+      <div class="price-range">
+        <label for="minPrice">Min:</label>
+        <input type="number" id="minPrice" placeholder="0" min="0">
+        <label for="maxPrice">Max:</label>
+        <input type="number" id="maxPrice" placeholder="999" min="0">
+      </div>
     </div>
   </section>
 
   <!-- Products -->
   <main>
     <section class="product-grid" id="productGrid">
-      <div class="product-card" data-category="men">
+      <div class="product-card" data-category="men" data-price="49.99">
         <img src="images/Angelina.jpg" alt="Product 1">
         <h3>Men’s Shirt</h3>
         <p class="price">$49.99</p>
         <button class="btn-primary">Add to Cart</button>
       </div>
-      <div class="product-card" data-category="women">
+      <div class="product-card" data-category="women" data-price="79.99">
         <img src="images/My first cretion.jpg" alt="Product 2">
         <h3>Women’s Dress</h3>
         <p class="price">$79.99</p>
         <button class="btn-primary">Add to Cart</button>
       </div>
-      <div class="product-card" data-category="kids">
+      <div class="product-card" data-category="kids" data-price="39.99">
         <img src="images/My second creation.jpg" alt="Product 3">
         <h3>Kids’ Outfit</h3>
         <p class="price">$39.99</p>
@@ -320,33 +225,53 @@
     <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
   </footer>
 
-  <!-- JS for filtering -->
+  <!-- JS for filtering + sorting -->
   <script>
     const searchBar = document.getElementById("searchBar");
     const filterCategory = document.getElementById("filterCategory");
-    const products = document.querySelectorAll(".product-card");
+    const sortPrice = document.getElementById("sortPrice");
+    const minPrice = document.getElementById("minPrice");
+    const maxPrice = document.getElementById("maxPrice");
+    const productGrid = document.getElementById("productGrid");
+    let products = Array.from(document.querySelectorAll(".product-card"));
 
     function filterProducts() {
       const searchText = searchBar.value.toLowerCase();
       const category = filterCategory.value;
+      const min = parseFloat(minPrice.value) || 0;
+      const max = parseFloat(maxPrice.value) || Infinity;
 
       products.forEach(product => {
         const name = product.querySelector("h3").textContent.toLowerCase();
         const productCategory = product.dataset.category;
+        const price = parseFloat(product.dataset.price);
 
         const matchesSearch = name.includes(searchText);
         const matchesCategory = category === "all" || productCategory === category;
+        const matchesPrice = price >= min && price <= max;
 
-        if (matchesSearch && matchesCategory) {
-          product.style.display = "block";
-        } else {
-          product.style.display = "none";
-        }
+        product.style.display = (matchesSearch && matchesCategory && matchesPrice) ? "block" : "none";
       });
+    }
+
+    function sortProducts() {
+      let sorted = [...products];
+      const sortValue = sortPrice.value;
+
+      if (sortValue === "low-high") {
+        sorted.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+      } else if (sortValue === "high-low") {
+        sorted.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+      }
+
+      sorted.forEach(p => productGrid.appendChild(p));
     }
 
     searchBar.addEventListener("input", filterProducts);
     filterCategory.addEventListener("change", filterProducts);
+    minPrice.addEventListener("input", filterProducts);
+    maxPrice.addEventListener("input", filterProducts);
+    sortPrice.addEventListener("change", sortProducts);
   </script>
 </body>
 </html>
