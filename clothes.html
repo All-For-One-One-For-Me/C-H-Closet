@@ -8,65 +8,43 @@
     :root {
       --pink: #ff4f87;
       --pink-deep: #a00054;
-      --pink-warm: #ffc2d1;
+      --pink-warm: #ffe6ee;
       --accent-cool: #00b7c2;
-      --accent-cool-dark: #0096a1;
       --bg: #fff5f8;
       --ink: #1a1a1a;
       --white: #ffffff;
 
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-      --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.12);
-
-      --radius: 12px;
-      --transition: 0.3s ease-in-out;
+      --shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+      --radius: 14px;
+      --transition: 0.3s ease;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: "Poppins", sans-serif;
       background: var(--bg);
       color: var(--ink);
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color var(--transition);
-    }
-    a:hover {
-      color: var(--pink-deep);
-    }
+    a { text-decoration: none; color: inherit; transition: color var(--transition); }
+    a:hover { color: var(--pink-deep); }
 
-    img {
-      max-width: 100%;
-      border-radius: var(--radius);
-      display: block;
-    }
+    img { max-width: 100%; border-radius: var(--radius); display: block; }
 
-    h1, h2, h3, h4 {
-      text-align: center;
-      margin-bottom: 1rem;
-      line-height: 1.3;
-    }
+    h1, h2, h3 { margin-bottom: 1rem; line-height: 1.3; }
+    h1 { font-size: 2.2rem; font-weight: 700; }
 
     /* Navbar */
     .navbar {
-      background: var(--pink);
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
       color: var(--white);
       position: sticky;
       top: 0;
       z-index: 999;
       box-shadow: var(--shadow);
     }
-
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -75,125 +53,41 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .nav-logo {
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--white);
+      letter-spacing: 1px;
     }
-
     .nav-links {
       list-style: none;
       display: flex;
-      gap: 1.25rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
-      position: relative;
     }
-
     .nav-links .link {
       color: var(--white);
       font-weight: 500;
       padding: 0.4rem 0.8rem;
       border-radius: var(--radius);
       transition: background var(--transition);
-      position: relative;
     }
     .nav-links .link:hover,
     .nav-links .active {
-      background: var(--pink-deep);
+      background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Dropdown */
-    .dropdown {
-      position: relative;
-    }
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--white);
-      min-width: 200px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      display: none;
-      flex-direction: column;
-      z-index: 9999;
-    }
-    .dropdown-menu a {
-      color: var(--ink);
-      padding: 0.7rem 1rem;
-      border-radius: var(--radius);
-      transition: background var(--transition);
-      display: block;
-    }
-    .dropdown-menu a:hover {
-      background: var(--pink-warm);
-    }
-    .dropdown:hover .dropdown-menu {
-      display: flex;
-    }
-
-    /* Sub-dropdown */
-    .sub-dropdown {
-      position: relative;
-    }
-    .sub-dropdown-menu {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      background: var(--white);
-      min-width: 200px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      display: none;
-      flex-direction: column;
-      z-index: 9999;
-    }
-    .sub-dropdown:hover .sub-dropdown-menu {
-      display: flex;
-    }
-
-    /* Mobile Menu */
-    .menu-icon {
-      display: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #fff;
-      margin-left: 1rem;
-    }
-    .menu-toggle {
-      display: none;
-    }
+    /* Mobile nav */
+    .menu-icon { display: none; font-size: 2rem; cursor: pointer; color: #fff; }
+    .menu-toggle { display: none; }
     @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-      }
-      .nav-links {
-        flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        display: none;
-      }
-      .menu-icon {
-        display: block;
-        margin-left: auto;
-      }
-      .menu-toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-      }
-      .dropdown-menu,
-      .sub-dropdown-menu {
-        position: static;
-        box-shadow: none;
-        background: var(--pink-warm);
-        border-radius: 0;
-      }
+      .nav-container { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-direction: column; width: 100%; gap: 0.5rem; margin-top: 1rem; display: none; }
+      .menu-icon { display: block; margin-left: auto; }
+      .menu-toggle:checked + .menu-icon + .nav-links { display: flex; }
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       background: var(--pink-warm);
       border-radius: var(--radius);
@@ -202,9 +96,18 @@
       margin: 2rem auto;
       max-width: 900px;
       text-align: center;
+      animation: fadeInUp 0.8s ease;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Product Grid */
+    /* Product grid */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -213,38 +116,27 @@
       margin: 0 auto;
       padding: 2rem 1rem;
     }
-
     .product-card {
       background: var(--white);
       border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow);
       padding: 1.5rem;
       text-align: center;
       transition: transform var(--transition), box-shadow var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
     .product-card img {
-      border-radius: 8px;
+      border-radius: 10px;
       margin-bottom: 1rem;
-      height: 220px;
+      height: 240px;
+      width: 100%;
       object-fit: cover;
     }
-    .product-card h3 {
-      font-size: 1.1rem;
-      margin: 0.5rem 0;
-    }
-    .price {
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: var(--pink);
-      margin: 1rem 0;
-    }
+    .product-card h3 { font-size: 1.2rem; margin: 0.5rem 0; }
+    .price { font-weight: bold; font-size: 1.2rem; color: var(--pink); margin: 1rem 0; }
     .btn-primary {
       display: inline-block;
       padding: 0.75rem 1.25rem;
@@ -253,13 +145,13 @@
       cursor: pointer;
       font-weight: 600;
       font-size: 1rem;
-      background: var(--pink);
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
       color: var(--white);
-      transition: background var(--transition), transform var(--transition);
+      transition: transform var(--transition), box-shadow var(--transition);
     }
     .btn-primary:hover {
-      background: var(--pink-deep);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(160,0,84,0.4);
     }
 
     /* Footer */
@@ -267,78 +159,28 @@
       background: var(--pink);
       color: var(--white);
       text-align: center;
-      padding: 2rem 0 1rem 0;
+      padding: 2rem 1rem;
       margin-top: 3rem;
     }
-    .footer-content {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .footer-content .brand-accent {
-      color: #fff;
-      font-weight: bold;
-    }
+    footer p { font-size: 0.95rem; }
   </style>
 </head>
 <body>
-  <!-- Header / Navbar -->
+  <!-- Header -->
   <header class="site-header">
     <nav class="navbar">
       <div class="nav-container">
         <a href="index.html" class="nav-logo">C-H Closet</a>
 
-        <!-- Mobile Menu Toggle -->
+        <!-- Mobile -->
         <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
-        <!-- Navigation Links -->
+        <!-- Links -->
         <ul class="nav-links">
           <li><a href="index.html" class="link">Home</a></li>
           <li><a href="gallery.html" class="link">Gallery</a></li>
-
-          <!-- Dropdown for Clothes -->
-          <li class="dropdown">
-            <a href="clothes.html" class="link active">Clothes ▾</a>
-            <div class="dropdown-menu">
-              <!-- Men -->
-              <div class="sub-dropdown">
-                <a href="#">Men ▸</a>
-                <div class="sub-dropdown-menu">
-                  <a href="#">Shirts</a>
-                  <a href="#">Jeans</a>
-                  <a href="#">Tops</a>
-                  <a href="#">Tuxedos</a>
-                  <a href="#">Shoes</a>
-                  <a href="#">Traditional Wear</a>
-                </div>
-              </div>
-              <!-- Women -->
-              <div class="sub-dropdown">
-                <a href="#">Women ▸</a>
-                <div class="sub-dropdown-menu">
-                  <a href="#">Shirts</a>
-                  <a href="#">Jeans</a>
-                  <a href="#">Tops</a>
-                  <a href="#">Dresses</a>
-                  <a href="#">Shoes</a>
-                  <a href="#">Traditional Wear</a>
-                </div>
-              </div>
-              <!-- Kids -->
-              <div class="sub-dropdown">
-                <a href="#">Kids ▸</a>
-                <div class="sub-dropdown-menu">
-                  <a href="#">Shirts</a>
-                  <a href="#">Jeans</a>
-                  <a href="#">Tops</a>
-                  <a href="#">Suits</a>
-                  <a href="#">Shoes</a>
-                  <a href="#">Traditional Wear</a>
-                </div>
-              </div>
-            </div>
-          </li>
-
+          <li><a href="clothes.html" class="link active">Clothes</a></li>
           <li><a href="about-us.html" class="link">About Us</a></li>
           <li><a href="contact-us.html" class="link">Contact Us</a></li>
         </ul>
@@ -346,13 +188,13 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <h1>Shop Our Collection</h1>
-    <p>Exclusive pieces, handcrafted with style. Add your favorites to the cart today.</p>
+    <p>Exclusive pieces, crafted with style. Find your next favorite look today.</p>
   </section>
 
-  <!-- Product Grid -->
+  <!-- Products -->
   <main>
     <section class="product-grid">
       <div class="product-card">
@@ -378,9 +220,7 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
-    </div>
+    <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
   </footer>
 </body>
 </html>
