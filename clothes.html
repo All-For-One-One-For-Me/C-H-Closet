@@ -23,12 +23,10 @@
       --transition: 0.3s ease-in-out;
     }
 
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
@@ -36,7 +34,6 @@
       background: var(--bg);
       color: var(--ink);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -82,7 +79,6 @@
     .nav-logo {
       font-size: 1.8rem;
       font-weight: 700;
-      letter-spacing: -0.5px;
       color: var(--white);
     }
 
@@ -91,6 +87,7 @@
       display: flex;
       gap: 1.25rem;
       flex-wrap: wrap;
+      position: relative;
     }
 
     .nav-links .link {
@@ -99,10 +96,61 @@
       padding: 0.4rem 0.8rem;
       border-radius: var(--radius);
       transition: background var(--transition);
+      position: relative;
     }
     .nav-links .link:hover,
     .nav-links .active {
       background: var(--pink-deep);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--white);
+      min-width: 200px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    .dropdown-menu a {
+      color: var(--ink);
+      padding: 0.7rem 1rem;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+      display: block;
+    }
+    .dropdown-menu a:hover {
+      background: var(--pink-warm);
+    }
+    .dropdown:hover .dropdown-menu {
+      display: flex;
+    }
+
+    /* Sub-dropdown */
+    .sub-dropdown {
+      position: relative;
+    }
+    .sub-dropdown-menu {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      background: var(--white);
+      min-width: 200px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    .sub-dropdown:hover .sub-dropdown-menu {
+      display: flex;
     }
 
     /* Mobile Menu */
@@ -110,17 +158,11 @@
       display: none;
       font-size: 2rem;
       cursor: pointer;
-      user-select: none;
       color: #fff;
       margin-left: 1rem;
     }
     .menu-toggle {
       display: none;
-    }
-    @media (max-width: 900px) {
-      .nav-container {
-        padding: 1rem 0.7rem;
-      }
     }
     @media (max-width: 768px) {
       .nav-container {
@@ -142,12 +184,13 @@
       .menu-toggle:checked + .menu-icon + .nav-links {
         display: flex;
       }
-    }
-
-    /* Brand Accent */
-    .brand-accent {
-      color: var(--pink);
-      font-weight: bold;
+      .dropdown-menu,
+      .sub-dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: var(--pink-warm);
+        border-radius: 0;
+      }
     }
 
     /* Hero Section */
@@ -156,7 +199,7 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 3rem 2rem;
-      margin: 2rem auto 2rem auto;
+      margin: 2rem auto;
       max-width: 900px;
       text-align: center;
     }
@@ -189,9 +232,6 @@
     .product-card img {
       border-radius: 8px;
       margin-bottom: 1rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
       height: 220px;
       object-fit: cover;
     }
@@ -199,14 +239,12 @@
       font-size: 1.1rem;
       margin: 0.5rem 0;
     }
-
     .price {
       font-weight: bold;
       font-size: 1.2rem;
       color: var(--pink);
       margin: 1rem 0;
     }
-
     .btn-primary {
       display: inline-block;
       padding: 0.75rem 1.25rem;
@@ -218,8 +256,6 @@
       background: var(--pink);
       color: var(--white);
       transition: background var(--transition), transform var(--transition);
-      text-align: center;
-      margin-top: 0.5rem;
     }
     .btn-primary:hover {
       background: var(--pink-deep);
@@ -237,37 +273,10 @@
     .footer-content {
       max-width: 1100px;
       margin: 0 auto;
-      font-size: 1rem;
     }
     .footer-content .brand-accent {
       color: #fff;
       font-weight: bold;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .hero {
-        padding: 2rem 1rem;
-      }
-    }
-    @media (max-width: 768px) {
-      .product-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero {
-        padding: 1.5rem 0.5rem;
-      }
-    }
-    @media (max-width: 500px) {
-      .product-card img {
-        height: 140px;
-      }
-      footer {
-        padding: 1rem 0 0.5rem 0;
-      }
     }
   </style>
 </head>
@@ -276,17 +285,60 @@
   <header class="site-header">
     <nav class="navbar">
       <div class="nav-container">
-        <a href="index.html" class="nav-logo" aria-label="C-H Closet Home">C-H Closet</a>
+        <a href="index.html" class="nav-logo">C-H Closet</a>
 
         <!-- Mobile Menu Toggle -->
         <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-        <label for="menu-toggle" class="menu-icon" aria-label="Toggle navigation">&#9776;</label>
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
         <!-- Navigation Links -->
         <ul class="nav-links">
           <li><a href="index.html" class="link">Home</a></li>
           <li><a href="gallery.html" class="link">Gallery</a></li>
-          <li><a href="clothes.html" class="link active" aria-current="page">Clothes</a></li>
+
+          <!-- Dropdown for Clothes -->
+          <li class="dropdown">
+            <a href="clothes.html" class="link active">Clothes ▾</a>
+            <div class="dropdown-menu">
+              <!-- Men -->
+              <div class="sub-dropdown">
+                <a href="#">Men ▸</a>
+                <div class="sub-dropdown-menu">
+                  <a href="#">Shirts</a>
+                  <a href="#">Jeans</a>
+                  <a href="#">Tops</a>
+                  <a href="#">Tuxedos</a>
+                  <a href="#">Shoes</a>
+                  <a href="#">Traditional Wear</a>
+                </div>
+              </div>
+              <!-- Women -->
+              <div class="sub-dropdown">
+                <a href="#">Women ▸</a>
+                <div class="sub-dropdown-menu">
+                  <a href="#">Shirts</a>
+                  <a href="#">Jeans</a>
+                  <a href="#">Tops</a>
+                  <a href="#">Dresses</a>
+                  <a href="#">Shoes</a>
+                  <a href="#">Traditional Wear</a>
+                </div>
+              </div>
+              <!-- Kids -->
+              <div class="sub-dropdown">
+                <a href="#">Kids ▸</a>
+                <div class="sub-dropdown-menu">
+                  <a href="#">Shirts</a>
+                  <a href="#">Jeans</a>
+                  <a href="#">Tops</a>
+                  <a href="#">Suits</a>
+                  <a href="#">Shoes</a>
+                  <a href="#">Traditional Wear</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
           <li><a href="about-us.html" class="link">About Us</a></li>
           <li><a href="contact-us.html" class="link">Contact Us</a></li>
         </ul>
@@ -303,75 +355,23 @@
   <!-- Product Grid -->
   <main>
     <section class="product-grid">
-      <!-- Product Cards -->
       <div class="product-card">
         <img src="images/Angelina.jpg" alt="Product 1">
         <h3>Product 1</h3>
         <p class="price">$9,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
+        <button class="btn-primary">Add to Cart</button>
       </div>
-
       <div class="product-card">
         <img src="images/My first cretion.jpg" alt="Product 2">
         <h3>Product 2</h3>
         <p class="price">$99,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
+        <button class="btn-primary">Add to Cart</button>
       </div>
-
       <div class="product-card">
         <img src="images/My second creation.jpg" alt="Product 3">
         <h3>Product 3</h3>
         <p class="price">$999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/My third creation.jpg" alt="Product 4">
-        <h3>Product 4</h3>
-        <p class="price">$9,999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/My fourth creation.jpg" alt="Product 5">
-        <h3>Product 5</h3>
-        <p class="price">$99,999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/My fifth creation.jpg" alt="Product 6">
-        <h3>Product 6</h3>
-        <p class="price">$999,999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/My sixth creation.jpg" alt="Product 7">
-        <h3>Product 7</h3>
-        <p class="price">$9,999,999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/My seventh creation.jpg" alt="Product 8">
-        <h3>Product 8</h3>
-        <p class="price">$99,999,999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/My eighth creation.jpg" alt="Product 9">
-        <h3>Product 9</h3>
-        <p class="price">$999,999,999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="images/My ninth creation.jpg" alt="Product 10">
-        <h3>Product 10</h3>
-        <p class="price">$9,999,999,999,999.99</p>
-        <button type="button" class="btn-primary">Add to Cart</button>
+        <button class="btn-primary">Add to Cart</button>
       </div>
     </section>
   </main>
