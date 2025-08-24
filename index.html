@@ -221,30 +221,6 @@
     .carousel-btn.next {
       right: 12px;
     }
-    .carousel-dots {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.5rem;
-      z-index: 20;
-    }
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--pink-warm);
-      border: 2px solid var(--pink);
-      cursor: pointer;
-      transition: background 0.1s, border 0.1s;
-      opacity: 0.7;
-    }
-    .carousel-dot.active {
-      background: var(--pink);
-      border: 2px solid var(--pink-deep);
-      opacity: 1;
-    }
 
     /* Welcome Section */
     .welcome {
@@ -477,7 +453,6 @@
         </div>
       </div>
     </div>
-    <div class="carousel-dots"></div>
   </div>
 
   <!-- Featured Products -->
@@ -518,16 +493,12 @@
     const slides = document.querySelectorAll('.carousel-slide');
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
-    const dotsContainer = document.querySelector('.carousel-dots');
     let currentSlide = 0;
     let autoSlideInterval;
 
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
-        if (dotsContainer.children[i]) {
-          dotsContainer.children[i].classList.toggle('active', i === index);
-        }
       });
       currentSlide = index;
     }
@@ -539,14 +510,6 @@
     function prevSlide() {
       showSlide((currentSlide - 1 + slides.length) % slides.length);
     }
-
-    // Dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => showSlide(i));
-      dotsContainer.appendChild(dot);
-    });
 
     prevBtn.addEventListener('click', prevSlide);
     nextBtn.addEventListener('click', nextSlide);
