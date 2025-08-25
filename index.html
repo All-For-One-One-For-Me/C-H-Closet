@@ -388,17 +388,41 @@
   </style>
 </head>
 <body>
-  <!-- Header / Navbar -->
+    <!-- Header -->
   <header class="site-header">
-    <nav class="navbar" aria-label="Main Navigation">
+    <nav class="navbar" aria-label="Main navigation">
       <div class="nav-container">
         <a href="index.html" class="nav-logo">C-H Closet</a>
-        <ul class="nav-links">
-          <li><a class="link active" href="index.html" aria-current="page">Home</a></li>
-          <li><a class="link" href="gallery.html">Gallery</a></li>
-          <li><a class="link" href="clothes.html">Clothes</a></li>
-          <li><a class="link" href="about-us.html">About Us</a></li>
-          <li><a class="link" href="contact-us.html">Contact Us</a></li>
+
+        <!-- Mobile -->
+        <button class="menu-icon" id="menuIcon" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+
+        <!-- Links -->
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="link">Home</a></li>
+          <li><a href="gallery.html" class="link">Gallery</a></li>
+
+          <!-- Clothes dropdown -->
+          <li class="dropdown">
+            <a href="clothes.html" class="link active">Clothes ▾</a>
+            <div class="dropdown-menu" role="menu">
+              <div class="sub-dropdown">
+                <a href="#">Men ▸</a>
+                <div class="sub-dropdown-menu">
+                  <a href="#">Shirts</a><a href="#">Jeans</a><a href="#">Tops</a>
+                </div>
+              </div>
+              <div class="sub-dropdown">
+                <a href="#">Women ▸</a>
+                <div class="sub-dropdown-menu">
+                  <a href="#">Dresses</a><a href="#">Shoes</a><a href="#">Tops</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li><a href="about-us.html" class="link">About Us</a></li>
+          <li><a href="contact-us.html" class="link">Contact Us</a></li>
         </ul>
       </div>
     </nav>
