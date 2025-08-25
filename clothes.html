@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>C-H Closet | Shop</title>
   <style>
     :root {
@@ -28,11 +28,7 @@
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color var(--transition);
-    }
+    a { text-decoration: none; color: inherit; transition: color var(--transition); }
     a:hover { color: var(--pink-deep); }
 
     img { max-width: 100%; border-radius: var(--radius); display: block; }
@@ -55,6 +51,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
     .nav-logo {
       font-size: 1.8rem;
@@ -74,12 +71,9 @@
       padding: 0.5rem 1rem;
       border-radius: var(--radius);
       transition: background var(--transition);
-      position: relative;
     }
     .nav-links .link:hover,
-    .nav-links .active {
-      background: rgba(255,255,255,0.15);
-    }
+    .nav-links .active { background: rgba(255,255,255,0.15); }
 
     /* Dropdown */
     .dropdown, .sub-dropdown { position: relative; }
@@ -91,17 +85,18 @@
       min-width: 220px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      display: flex;
       flex-direction: column;
       opacity: 0;
       transform: translateY(10px);
       pointer-events: none;
       transition: opacity var(--transition), transform var(--transition);
+      z-index: 500;
     }
     .dropdown-menu a, .sub-dropdown-menu a {
       color: var(--ink);
       padding: 0.8rem 1rem;
       border-radius: var(--radius);
-      display: block;
       transition: background var(--transition), padding-left var(--transition);
     }
     .dropdown-menu a:hover, .sub-dropdown-menu a:hover {
@@ -117,13 +112,12 @@
     .sub-dropdown-menu { top: 0; left: 100%; }
 
     /* Mobile nav */
-    .menu-icon { display: none; font-size: 2rem; cursor: pointer; color: #fff; }
-    .menu-toggle { display: none; }
+    .menu-icon { display: none; font-size: 2rem; cursor: pointer; color: #fff; user-select: none; }
     @media (max-width: 768px) {
       .nav-container { flex-direction: column; align-items: flex-start; }
       .nav-links { flex-direction: column; width: 100%; gap: 0.5rem; margin-top: 1rem; display: none; }
+      .nav-links.open { display: flex; }
       .menu-icon { display: block; margin-left: auto; }
-      .menu-toggle:checked + .menu-icon + .nav-links { display: flex; }
       .dropdown-menu, .sub-dropdown-menu {
         position: static;
         box-shadow: none;
@@ -191,7 +185,14 @@
       box-shadow: var(--shadow);
       padding: 1.5rem;
       text-align: center;
-      transition: transform var(--transition), box-shadow var(--transition);
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      opacity: 1;
+      transform: scale(1);
+    }
+    .product-card.hide {
+      opacity: 0;
+      transform: scale(0.9);
+      pointer-events: none;
     }
     .product-card:hover {
       transform: translateY(-6px) scale(1.02);
@@ -229,29 +230,29 @@
       text-align: center;
       padding: 2rem 0 1rem 0;
       margin-top: 3rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
       <div class="nav-container">
         <a href="index.html" class="nav-logo">C-H Closet</a>
 
         <!-- Mobile -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <button class="menu-icon" id="menuIcon" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
 
         <!-- Links -->
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
           <li><a href="index.html" class="link">Home</a></li>
           <li><a href="gallery.html" class="link">Gallery</a></li>
 
           <!-- Clothes dropdown -->
           <li class="dropdown">
             <a href="clothes.html" class="link active">Clothes ▾</a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" role="menu">
               <div class="sub-dropdown">
                 <a href="#">Men ▸</a>
                 <div class="sub-dropdown-menu">
@@ -281,8 +282,10 @@
 
     <!-- Search + Filters -->
     <div class="filters">
-      <input type="text" id="searchBar" placeholder="Search products...">
-      <select id="filterCategory">
+      <label for="searchBar" class="visually-hidden">Search Products</label>
+      <input type="text" id="searchBar" placeholder="Search products..." aria-label="Search products">
+      <label for="filterCategory" class="visually-hidden">Filter by category</label>
+      <select id="filterCategory" aria-label="Filter products by category">
         <option value="all">All Categories</option>
         <option value="men">Men</option>
         <option value="women">Women</option>
@@ -294,40 +297,53 @@
   <!-- Products -->
   <main>
     <section class="product-grid" id="productGrid">
-      <div class="product-card" data-category="men">
-        <img src="images/Angelina.jpg" alt="Product 1">
+      <article class="product-card" data-category="men">
+        <img src="images/Angelina.jpg" alt="Classic Men’s Shirt" loading="lazy">
         <h3>Men’s Shirt</h3>
         <p class="price">$49.99</p>
         <button class="btn-primary">Add to Cart</button>
-      </div>
-      <div class="product-card" data-category="women">
-        <img src="images/My first cretion.jpg" alt="Product 2">
+      </article>
+      <article class="product-card" data-category="women">
+        <img src="images/My first creation.jpg" alt="Elegant Women’s Dress" loading="lazy">
         <h3>Women’s Dress</h3>
         <p class="price">$79.99</p>
         <button class="btn-primary">Add to Cart</button>
-      </div>
-      <div class="product-card" data-category="kids">
-        <img src="images/My second creation.jpg" alt="Product 3">
+      </article>
+      <article class="product-card" data-category="kids">
+        <img src="images/My secondcreation.jpg" alt="Playful Kids’ Outfit" loading="lazy">
         <h3>Kids’ Outfit</h3>
         <p class="price">$39.99</p>
         <button class="btn-primary">Add to Cart</button>
-      </div>
+      </article>
     </section>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 <span class="brand-accent">C-H Closet</span>. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> C-H Closet. All rights reserved.</p>
   </footer>
 
-  <!-- JS for filtering -->
+  <!-- JS -->
   <script>
+    // Mobile nav toggle
+    const menuIcon = document.getElementById("menuIcon");
+    const navLinks = document.getElementById("navLinks");
+
+    menuIcon.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      const expanded = menuIcon.getAttribute("aria-expanded") === "true";
+      menuIcon.setAttribute("aria-expanded", !expanded);
+    });
+
+    // Filtering
     const searchBar = document.getElementById("searchBar");
     const filterCategory = document.getElementById("filterCategory");
     const products = document.querySelectorAll(".product-card");
+    const yearSpan = document.getElementById("year");
+    yearSpan.textContent = new Date().getFullYear();
 
     function filterProducts() {
-      const searchText = searchBar.value.toLowerCase();
+      const searchText = searchBar.value.trim().toLowerCase();
       const category = filterCategory.value;
 
       products.forEach(product => {
@@ -337,11 +353,7 @@
         const matchesSearch = name.includes(searchText);
         const matchesCategory = category === "all" || productCategory === category;
 
-        if (matchesSearch && matchesCategory) {
-          product.style.display = "block";
-        } else {
-          product.style.display = "none";
-        }
+        product.classList.toggle("hide", !(matchesSearch && matchesCategory));
       });
     }
 
